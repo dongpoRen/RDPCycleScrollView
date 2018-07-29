@@ -114,9 +114,7 @@
         _visibleView.frame = _reuseView.frame;
         // 2.3 初始化scrollView的偏移量
         scrollView.contentOffset = CGPointMake(w, 0);
-        
     }
-    
 }
 
 @end
