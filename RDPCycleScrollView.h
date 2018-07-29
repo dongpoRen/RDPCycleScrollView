@@ -14,8 +14,7 @@
 @property (strong, nonatomic) UIImageView *visibleView;
 @property (strong, nonatomic) UIImageView *reuseView;
 
-
 /* iamges */
-@property (nonatomic, copy) NSMutableArray *images;
+@property (nonatomic, strong) NSMutableArray *images;
 
 @end

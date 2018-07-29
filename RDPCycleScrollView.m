@@ -10,8 +10,6 @@
 #define kCount self.images.count
 
 @interface RDPCycleScrollView ()
-
-
 @end
 
 @implementation RDPCycleScrollView
@@ -24,8 +22,6 @@
 
     return  self;
 }
-
-
 
 /**
  *  当同时重写一个读写属性的set和get方法的时候,就不会在生成相应的成员变量
@@ -40,20 +36,14 @@
     return _images;
 }
 
-
-
-
 - (void)rdp_cycleScrollViewWithRect:(CGRect)frame {
     
     CGFloat w = frame.size.width;
     CGFloat h = frame.size.height;
     
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:frame];
-
     self.scrollView = scrollView;
     [self addSubview:scrollView];
-    
-    
     
     // 初始化scrollView
     _scrollView.pagingEnabled = YES;
@@ -66,7 +56,6 @@
     UIImageView *visibleView = [[UIImageView alloc] init];
     _visibleView = visibleView;
 
-  
     _visibleView.frame = CGRectMake(w, 0, w, h);
     _visibleView.tag = 0;
     [_scrollView addSubview:_visibleView];
@@ -76,11 +65,7 @@
     _reuseView = reuseView;
     _reuseView.frame = CGRectMake(0, 0, w, h);
     [_scrollView addSubview:_reuseView];
-//    _visibleView.contentMode = UIViewContentModeScaleAspectFit;
-//    _reuseView.contentMode  = UIViewContentModeScaleAspectFit;
 }
-
-
 
 #pragma mark- 重新开始布局子控件
 - (void)layoutSubviews {
@@ -88,18 +73,15 @@
     _visibleView.image = [UIImage imageNamed:self.images[0]];
 }
 
-
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     // 获取偏移量
     CGFloat offsetX = scrollView.contentOffset.x;
-
     CGFloat w = scrollView.frame.size.width;
     
     // 1.设置 循环利用view 的位置
     CGRect f = _reuseView.frame;
 
-    
     NSInteger index = 0;
     
     if (offsetX > _visibleView.frame.origin.x) { // 显示在最右边
@@ -130,8 +112,6 @@
         
         // 2.2.交换显示位置
         _visibleView.frame = _reuseView.frame;
-        
-        ;
         // 2.3 初始化scrollView的偏移量
         scrollView.contentOffset = CGPointMake(w, 0);
         
